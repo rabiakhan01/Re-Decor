@@ -1,7 +1,8 @@
-const orangeColor = '#FFAB1B';
-const pinkColor = '#8F0ACD';
-
+const pinkColor = '#FC6C85';
+const skyColor = '#1dd1cc';
+const whiteColor = '#FFFFFF';
 export {
-    orangeColor,
     pinkColor,
+    skyColor,
+    whiteColor,
 }
