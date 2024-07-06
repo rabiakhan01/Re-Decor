@@ -3,10 +3,10 @@ import images from '../../../assets/images/images'
 import Button from '../Button';
 const Navbar = () => {
     return (
-        <nav className='flex justify-between text-whiteColor items-center h-[4.5rem] bg-gradient-to-r from-pinkColor via-pinkColor to-skyColor w-full'>
-            <div className='flex items-center'>
-                <img src={images.logo} alt='logo' className='object-cover h-36 w-36' />
-                <p className='text-xl font-bold'>RE DECOR</p>
+        <nav className='flex justify-between text-whiteColor items-center h-[4.5rem] bg-gradient-to-r from-pinkColor via-pinkColor to-skyColor w-full px-6'>
+            <div className='flex gap-1 items-center'>
+                <img src={images.logo} alt='logo' className='object-cover h-10 w-10' />
+                <p className='text-2xl font-bold'>RE DECOR</p>
             </div>
             <div className='flex gap-4 text-md'>
                 <p>Home</p>
