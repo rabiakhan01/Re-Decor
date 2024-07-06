@@ -1,8 +1,10 @@
 const pinkColor = '#FC6C85';
 const skyColor = '#1dd1cc';
-const whiteColor = '#FFFFFF';
+const textWhiteColor = '#FFFFFF';
+const platniumColor = '#E5E4E2';
 export {
     pinkColor,
     skyColor,
-    whiteColor,
+    textWhiteColor,
+    platniumColor
 }
