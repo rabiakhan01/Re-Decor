@@ -17,7 +17,8 @@ const images = {
     phone: require('../icons/telephone-call.png'),
     star: require('./stars.png'),
     visible: require('../icons/visible.png'),
-    hidden: require('../icons/hidden.png')
+    hidden: require('../icons/hidden.png'),
+    google: require('../icons/search.png'),
 
 }
 
