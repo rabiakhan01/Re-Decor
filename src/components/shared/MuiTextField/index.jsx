@@ -12,7 +12,6 @@ const MuiTextField = ({ name, placeholder, type, value, onChange }) => {
             variant="outlined"
             onChange={onChange}
             size="small"
-
         />
     )
 }

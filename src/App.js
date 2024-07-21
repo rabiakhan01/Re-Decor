@@ -1,16 +1,10 @@
-import { createTheme } from '@mui/material';
-import HomePage from '../src/pages/HomePage'
-import { Footer, Navbar } from './components/shared';
-import Layout from './components/shared/Layout';
-import SignupPage from './pages/SignupPage';
+
+import LoginPage from './pages/LoginPage';
 
 function App() {
 
-  const theme = createTheme({
-    
-  })
   return (
-    <SignupPage />
+    <LoginPage />
   );
 }
 
