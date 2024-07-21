@@ -29,9 +29,10 @@ const SignupPage = () => {
         navigate('/login')
     }
     return (
-        <div className="flex w-full">
-            <div className="w-full sm:w-[60%] h-lvh flex flex-col gap-3 justify-center items-center px-10 sm:px-0">
-                <div className="w-full sm:w-[70%] lg:w-[60%]">
+        <div className="flex w-full h-lvh justify-center items-center">
+            <img src={images.cover_photo} alt="" className="object-cover h-full w-full" />
+            <div className="absolute w-[90%] sm:w-[80%] md:w-[60%] xl:w-[40%] flex flex-col gap-2 justify-center items-center px-5 sm:px-12 py-4 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100">
+                <div className="w-full">
                     <div className="w-10 h-10 md:w-12 md:h-12 cursor-pointer">
                         <img src={images.logo} alt="" className="object-cover" />
                     </div>
@@ -40,7 +41,7 @@ const SignupPage = () => {
                         <p className="font-normal text-sm md:text-base text-textSecondaryColor">Please enter your detail to access the interesting features of Re Decor</p>
                     </div>
                 </div>
-                <form className="flex flex-col gap-3 w-full sm:w-[70%] lg:w-[60%]">
+                <form className="flex flex-col gap-3 w-full">
                     <MuiTextField
                         name="username"
                         placeholder="username"
@@ -91,7 +92,7 @@ const SignupPage = () => {
                         onClick={handelClick}
                     />
                 </form>
-                <div className="relative flex justify-center items-center w-full sm:w-[70%] lg:w-[60%]">
+                <div className="relative flex justify-center items-center w-full">
                     <MuiButton
                         variant="outlined"
                         fullWidth
@@ -99,9 +100,6 @@ const SignupPage = () => {
                         sx={{ borderRadius: 2, height: 40, borderColor: grayColor, color: textPrimaryColor, textTransform: 'capitalize', ":hover": { borderColor: purpleColor, bgcolor: 'white' }, fontSize: { xs: 12, sm: 14, lg: 16 } }}
                     >Signup with google</MuiButton>
                 </div>
-            </div>
-            <div className="w-[40%] h-lvh hidden sm:flex">
-                <img src={images.cover_photo} alt="" className="object-cover h-full w-full" />
             </div>
         </div>
     )

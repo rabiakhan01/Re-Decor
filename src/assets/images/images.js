@@ -1,7 +1,7 @@
 const images = {
 
     //signup page images:
-    cover_photo: require('./cover.jpg'),
+    cover_photo: require('./cover1.jpg'),
     logo: require('./logo.png'),
 
     //icons 
