@@ -1,10 +1,11 @@
-
-import LoginPage from './pages/LoginPage';
-
+import { BrowserRouter } from "react-router-dom";
+import Routing from "./routes";
 function App() {
 
   return (
-    <LoginPage />
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   );
 }
 

@@ -1,12 +1,14 @@
 import React, { useState } from "react"
 import images from "../../assets/images/images";
-import { Checkbox, Divider } from "@mui/material";
+import { Checkbox } from "@mui/material";
 import Button from "../../components/shared/Button";
-import { blueColor, grayColor, purpleColor, textLightBlackColor, textPrimaryColor } from "../../utils/styles/colors";
+import { blueColor, grayColor, purpleColor, textPrimaryColor } from "../../utils/styles/colors";
 import MuiTextField from "../../components/shared/MuiTextField";
 import { Button as MuiButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
+    const navigate = useNavigate();
     const [signupUser, setSignupUser] = useState({
         name: '',
         email: '',
@@ -21,6 +23,10 @@ const SignupPage = () => {
 
     const showPassword = () => {
         setVisiblePassword(!visiblePassword)
+    }
+
+    const handelClick = () => {
+        navigate('/login')
     }
     return (
         <div className="flex w-full">
@@ -74,13 +80,22 @@ const SignupPage = () => {
                         gradiant={true}
                         rounded="rounded-lg"
                         onChange={handelChange}
+                        onClick={handelClick}
+                    />
+                    <Button
+                        name="Already Have An Account"
+                        variant="outlined"
+                        gradiant={true}
+                        rounded="rounded-lg"
+                        onChange={handelChange}
+                        onClick={handelClick}
                     />
                 </form>
                 <div className="relative flex justify-center items-center w-full sm:w-[70%] lg:w-[60%]">
                     <MuiButton
                         variant="outlined"
                         fullWidth
-                        endIcon={<img src={images.google} className="h-5 w-5" />}
+                        endIcon={<img src={images.google} alt="" className="h-5 w-5" />}
                         sx={{ borderRadius: 2, height: 40, borderColor: grayColor, color: textPrimaryColor, textTransform: 'capitalize', ":hover": { borderColor: purpleColor, bgcolor: 'white' }, fontSize: { xs: 12, sm: 14, lg: 16 } }}
                     >Signup with google</MuiButton>
                 </div>

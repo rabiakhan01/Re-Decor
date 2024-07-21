@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 import images from "../../assets/images/images";
-import { Checkbox, Divider } from "@mui/material";
+import { Checkbox, } from "@mui/material";
 import Button from "../../components/shared/Button";
-import { blueColor, grayColor, purpleColor, textLightBlackColor, textPrimaryColor } from "../../utils/styles/colors";
+import { blueColor, grayColor, purpleColor, textPrimaryColor } from "../../utils/styles/colors";
 import MuiTextField from "../../components/shared/MuiTextField";
 import { Button as MuiButton } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [signupUser, setSignupUser] = useState({
         name: '',
         email: '',
@@ -22,6 +23,10 @@ const LoginPage = () => {
 
     const showPassword = () => {
         setVisiblePassword(!visiblePassword)
+    }
+
+    const handelClick = (path) => {
+        navigate(path)
     }
     return (
         <div className="flex w-full">
@@ -65,6 +70,7 @@ const LoginPage = () => {
                         gradiant={true}
                         rounded="rounded-lg"
                         onChange={handelChange}
+                        onClick={() => handelClick('/')}
                     />
                     <Button
                         name="Create An Account"
@@ -72,6 +78,7 @@ const LoginPage = () => {
                         gradiant={true}
                         rounded="rounded-lg"
                         onChange={handelChange}
+                        onClick={() => handelClick('/signup')}
                     />
                 </form>
                 <div className="relative flex justify-center items-center w-full sm:w-[70%] lg:w-[60%]">

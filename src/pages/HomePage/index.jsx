@@ -1,10 +1,8 @@
-import { Navbar } from "../../components/shared";
+import Layout from "../../components/shared/Layout";
 
 const HomePage = () => {
     return (
-        <div>
-            <p>Home Page</p>
-        </div>
+        <div>hello from home page</div>
     )
 }
 
