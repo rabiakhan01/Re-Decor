@@ -1,8 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
+import Routing from "./routes";
 function App() {
+
   return (
-    <div className="bg-gray-600 text-yellow-950">
-      <p>First Code</p>
-    </div>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   );
 }
 
