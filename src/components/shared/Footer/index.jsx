@@ -1,11 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images/images";
 import Button from "../Button";
 const Footer = () => {
+
+    const navigate = useNavigate();
+    const handelClick = () => {
+        navigate('/')
+    }
     return (
         <footer className="relative flex flex-col justify-center items-center text-textWhiteColor">
             <div className="absolute -top-24 flex justify-center items-center w-full">
                 <div className="relative flex flex-col mobile:flex-row justify-between overflow-hidden mobile:items-center w-[85%] px-4 py-4 mobile:py-0 h-36 rounded-2xl border border-platniumColor shadow-platniumColor bg-lightPurpleColor">
-                    <img src={images.star} alt="" className="absolute -right-48 md:right-0" />
+                    <img src={images.star} alt="" className="absolute -right-48 md:right-0 cursor-pointer" onClick={handelClick} />
                     <div className="text-textPrimaryColor z-30">
                         <p className="text-lg mobile:text-xl md:text-2xl font-semibold">Ready to Get Started</p>
                         <p className="text-sm sm:text-lg w-full mobile:w-48 sm:w-auto">If you have any question feel free to Ask</p>
@@ -13,7 +19,7 @@ const Footer = () => {
                     <div className="z-20 w-full mobile:w-auto">
                         <Button
                             name="Contact US"
-                            variant="filled"
+                            variant="contained"
                             gradiant={true}
                             fullWidth={true}
                         />
@@ -23,7 +29,7 @@ const Footer = () => {
             <div className='flex gap-1 h-auto items-center bg-gradient-to-r from-blueColor to-purpleColor w-full px-6 pt-20 pb-6'>
                 <div className="flex flex-wrap justify-between w-full">
                     <div className="grid grid-flow-row text-sm sm:text-base gap-2 w-full xs:w-1/2 md:w-[25%] px-2">
-                        <figure className="flex gap-2 items-center cursor-pointer">
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={handelClick}>
                             <img src={images.home} alt="" className="w-4 h-4" />
                             <figcaption>Home</figcaption>
                         </figure>
