@@ -1,18 +1,26 @@
 
 import { TextField } from "@mui/material";
 
-const MuiTextField = ({ name, placeholder, type, value, onChange }) => {
+const MuiTextField = ({ name, placeholder, type, value, onChange, error, helperText }) => {
 
     return (
-        <TextField
-            id="outlined-basic"
-            name={name}
-            type={type}
-            label={placeholder}
-            variant="outlined"
-            onChange={onChange}
-            size="small"
-        />
+        <div className="h-14">
+            <TextField
+                FormHelperTextProps={{ style: { marginTop: '0px', } }}
+                autoComplete="off"
+                helperText={helperText}
+                value={value}
+                error={error}
+                fullWidth
+                id="outlined-basic"
+                name={name}
+                type={type}
+                label={placeholder}
+                variant="outlined"
+                onChange={onChange}
+                size="small"
+            />
+        </div>
     )
 }
 

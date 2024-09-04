@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import images from '../../../assets/images/images'
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
 
+    const naviagte = useNavigate();
     //mobile menu
     const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -26,10 +28,14 @@ const Navbar = () => {
     const hideMenu = () => {
         setMobileMenu(false)
     }
+
+    const handelClick = (path) => {
+        naviagte(path)
+    }
     return (
         <header className='sticky top-0 z-50 flex justify-between text-textPrimaryColor font-medium items-center h-[4.5rem]  w-full px-6 shadow-md shadow-platniumColor bg-primaryColor'>
-            <div className='flex gap-1 items-center'>
-                <img src={images.logo} alt='logo' className='object-cover h-7 w-7 md:h-8 md:w-8' />
+            <div className='flex gap-1 items-center cursor-pointer' onClick={() => handelClick('/')}>
+                <img src={images.logo} alt='logo' className='object-cover h-7 w-7 md:h-8 md:w-8 ' />
                 <p className='text-lg md:text-xl font-bold bg-gradient-to-r from-blueColor to-purpleColor bg-clip-text text-transparent'>RE DECOR</p>
             </div>
             <div className='hidden md:flex gap-4 text-md'>
@@ -38,8 +44,9 @@ const Navbar = () => {
             <div className='hidden md:flex'>
                 <Button
                     name="Sign In"
-                    variant="filled"
+                    variant="contained"
                     gradiant={true}
+                    onClick={() => handelClick('/signup')}
                 />
 
             </div>
@@ -62,8 +69,9 @@ const Navbar = () => {
                     <NavItems />
                     <Button
                         name="Sign In"
-                        variant="filled"
+                        variant="contained"
                         gradiant={true}
+                        onClick={() => handelClick('/signup')}
                     />
                 </div>
             }
