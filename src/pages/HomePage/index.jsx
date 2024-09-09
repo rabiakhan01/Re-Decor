@@ -1,8 +1,12 @@
+import LandingSection from "../../components/HomePage/LandingSection/indesx";
 import Layout from "../../components/shared/Layout";
 
 const HomePage = () => {
     return (
-        <div>hello from home page</div>
+        <div className="w-full flex flex-col">
+            <LandingSection />
+            <div className="h-40"></div>
+        </div>
     )
 }
 

@@ -1,5 +1,7 @@
 const images = {
 
+    //home page images
+    landingPage: require('./LandingPage.jpeg'),
     //signup page images:
     cover_photo: require('./cover1.jpg'),
     logo: require('./logo.png'),
@@ -23,3 +25,5 @@ const images = {
 }
 
 export default images;
+
+export { default as LandingPage } from './LandingPage';

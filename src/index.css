@@ -1,3 +1,30 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body  {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c9c5c5;
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ccc8c8;
+}
