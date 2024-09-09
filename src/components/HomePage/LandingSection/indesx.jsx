@@ -1,5 +1,4 @@
 import images from "../../../assets/images/images";
-import LandingPage from "../../../assets/images/LandingPage";
 import Button from "../../shared/Button";
 
 const LandingSection = () => {

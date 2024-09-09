@@ -26,4 +26,3 @@ const images = {
 
 export default images;
 
-export { default as LandingPage } from './LandingPage';
