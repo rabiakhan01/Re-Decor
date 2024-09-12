@@ -2,6 +2,10 @@ const images = {
 
     //home page images
     landingPage: require('./LandingPage.jpeg'),
+    service1: require('./service1.jpg'),
+    service2: require('./service2.jpg'),
+    service3: require('./service3.jpg'),
+
     //signup page images:
     cover_photo: require('./cover1.jpg'),
     logo: require('./logo.png'),

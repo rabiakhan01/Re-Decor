@@ -6,7 +6,7 @@ export default function Button({ type, name, variant, color, gradiant, fullWidth
             color = color
         }
         else if (gradiant) {
-            color = `text-textWhiteColor  bg-gradient-to-r from-blueColor to-purpleColor`
+            color = `text-textWhiteColor  bg-gradient-to-r from-blueColor to-purpleColor hover:opacity-90`
         }
     }
     else if (variant === 'outlined') {
@@ -14,10 +14,10 @@ export default function Button({ type, name, variant, color, gradiant, fullWidth
             color = color
         }
         else if (gradiant) {
-            color = `border border-purpleColor text-purpleColor`
+            color = `border border-purpleColor text-purpleColor hover:bg-purple-400 !font-semibold`
         }
     }
     return (
-        <button type={type} className={`${fullWidth ? 'w-full' : ''} flex justify-center items-center px-3 mobile:px-4 md:px-6 py-2.5 text-xs mobile:text-sm sm:text-base font-semibold capitalize ${color} ${rounded ? rounded : 'rounded-full !py-[10px] !px-5'}`} id="button" onClick={onClick}>{name}</button>
+        <button type={type} className={`${fullWidth ? 'w-full' : ''} flex justify-center items-center px-3 mobile:px-4 md:px-6 py-2.5 text-xs mobile:text-sm sm:text-base font-normal capitalize ${color} ${rounded ? rounded : 'rounded-full !py-[10px] !px-5'}`} id="button" onClick={onClick}>{name}</button>
     )
 }
