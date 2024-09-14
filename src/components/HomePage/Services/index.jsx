@@ -14,7 +14,7 @@ const Services = () => {
                             <div className="w-1 h-8 bg-blueColor  ml-4 mt-4"></div>
                             <div>
                                 <p className="text-blueColor text-md font-semibold ml-2 mt-[18px]">{heading}</p>
-                                <p className="text-textSecondaryColor text-base ml-2">{desc}</p>
+                                <p className="text-textSecondaryColor text-sm ml-2 ">{desc}</p>
                             </div>
                         </div>
                     }
