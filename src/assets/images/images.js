@@ -5,6 +5,16 @@ const images = {
     service1: require('./service1.jpg'),
     service2: require('./service2.jpg'),
     service3: require('./service3.jpg'),
+    frenchInterior: require('./french_interior_design.jpg'),
+    highTechInterior: require('./high_tect_interior_design.jpg'),
+    gothicInterior: require('./gothic_interior_design.jpg'),
+    africanInterior: require('./african_interior_design.jpg'),
+    fusionInterior: require('./fusion_interior_design.jpg'),
+    indianInterior: require('./indian_interior_design.jpg'),
+    japaneseInterior: require('./japanese_interior_design.jpg'),
+    ottomonInterior: require('./ottomon_interior_design.jpg'),
+    zenInterior: require('./zen_interior_design.jpeg'),
+
 
     //signup page images:
     cover_photo: require('./cover1.jpg'),
@@ -25,6 +35,7 @@ const images = {
     visible: require('../icons/visible.png'),
     hidden: require('../icons/hidden.png'),
     google: require('../icons/search.png'),
+
 
 }
 

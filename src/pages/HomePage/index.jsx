@@ -1,7 +1,7 @@
 import Advantages from "../../components/HomePage/Advantages";
 import LandingSection from "../../components/HomePage/LandingSection/indesx";
 import Services from "../../components/HomePage/Services";
-import Layout from "../../components/shared/Layout";
+import Varities from "../../components/HomePage/Varities";
 
 const HomePage = () => {
     return (
@@ -9,6 +9,7 @@ const HomePage = () => {
             <LandingSection />
             <Services />
             <Advantages />
+            <Varities />
             <div className="h-40"></div>
         </div>
     )

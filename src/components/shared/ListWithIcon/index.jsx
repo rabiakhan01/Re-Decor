@@ -6,7 +6,7 @@ const ListWithIcon = ({ icon, heading, desc }) => {
             <div className="h-14 flex justify-end items-end">{icon}</div>
             <div className="h-fit">
                 <div className="text-base font-bold">{heading}</div>
-                <div className="text-sm line-clamp-3 480:line-clamp-2">{desc}</div>
+                <div className="text-sm line-clamp-3 480:line-clamp-2 text-textSecondaryColor">{desc}</div>
             </div>
         </div>
     )

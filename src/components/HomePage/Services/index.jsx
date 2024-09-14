@@ -28,7 +28,7 @@ const Services = () => {
             <div className="w-full xl:w-[50%] flex flex-wrap sm:flex-nowrap gap-4  xl:gap-2">
                 <div className="w-full sm:w-[50%] pr-3 mobile:pr-10 xl:pr-3 flex flex-col gap-4">
                     <div><h1 className="text-xl sm:text-2xl font-semibold">We Offer Services</h1></div>
-                    <div className="text-base">
+                    <div className="text-sm text-textSecondaryColor">
                         <p>
                             At RE Decor, we offer personalized design solutions
                             for living rooms, bedrooms, bathrooms, and kitchens.
