@@ -14,6 +14,9 @@ const images = {
     japaneseInterior: require('./japanese_interior_design.jpg'),
     ottomonInterior: require('./ottomon_interior_design.jpg'),
     zenInterior: require('./zen_interior_design.jpeg'),
+    zahra: require('./zahra.jpeg'),
+    rabia: require('./rabia.jpeg'),
+    rafay: require('./rafay.jpg'),
 
 
     //signup page images:
