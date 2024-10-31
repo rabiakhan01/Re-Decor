@@ -2,7 +2,7 @@ import images from "../../../assets/images/images";
 
 const Team = () => {
     return (
-        <div className="relative flex flex-col gap-5 md:gap-0 h-auto mb-44">
+        <div className="relative flex flex-col gap-5 md:gap-0 h-auto md:mb-44">
             <div className="h-[22rem] md:h-[35rem] w-full relative flex justify-center">
                 <img src={images.cover_photo} alt="" className="w-full h-full object-cover opacity-70 bg-purple-500" />
                 <div className="absolute w-full px-6 md:w-[70%] top-20 gap-4 flex flex-col justify-center items-center text-center  text-primaryColor">

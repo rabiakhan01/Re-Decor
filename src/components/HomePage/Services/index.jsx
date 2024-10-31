@@ -1,8 +1,10 @@
 import { useState } from "react";
 import images from "../../../assets/images/images";
+import { useNavigate } from "react-router-dom";
 import Button from "../../shared/Button";
 
 const Services = () => {
+    const navigate = useNavigate();
     const Service = ({ image, caption, heading, desc }) => {
         const [showText, setShowText] = useState(false);
         return (
@@ -39,7 +41,7 @@ const Services = () => {
                         </p>
                     </div>
                     <div className="w-[8rem] mobile:w-[10rem] xl:w-full">
-                        <Button name={'Try For Free'} variant={'contained'} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
+                        <Button name={'Try For Free'} variant={'contained'} onClick={() => { navigate('/AI') }} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
                     </div>
                 </div>
                 <Service

@@ -12,10 +12,10 @@ const Navbar = () => {
         //return the nav links
         return (
             <React.Fragment>
-                <p className='hover:underline cursor-pointer'>Home</p>
-                <p className='hover:underline cursor-pointer'>Contact</p>
-                <p className='hover:underline cursor-pointer'>About</p>
-                <p className='hover:underline cursor-pointer'>Gallery</p>
+                <p className='hover:underline cursor-pointer' onClick={() => { naviagte('/'); setMobileMenu(false) }}>Home</p>
+                <p className='hover:underline cursor-pointer' onClick={() => { naviagte('/contact-us'); setMobileMenu(false) }}>Contact</p>
+                <p className='hover:underline cursor-pointer' onClick={() => { naviagte('/about'); setMobileMenu(false) }}>About</p>
+                <p className='hover:underline cursor-pointer' onClick={() => { naviagte('/gallery'); setMobileMenu(false) }}>Gallery</p>
             </React.Fragment>
         )
     }

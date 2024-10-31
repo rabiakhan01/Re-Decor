@@ -75,11 +75,11 @@ const SignupPage = () => {
     }
 
     return (
-        <div className="flex w-full h-lvh justify-center items-center">
+        <div className="flex relative w-full h-lvh justify-center items-center">
             <img src={images.cover_photo} alt="" className="object-cover h-full w-full" />
-            <div className="absolute w-[90%] sm:w-[80%] md:w-[60%] xl:w-[40%] flex flex-col gap-3 justify-center items-center px-5 sm:px-12 py-4 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100">
+            <div className="absolute w-[90%] max-h-[95%] sm:w-[80%] md:w-[28rem] flex flex-col overflow-auto gap-3 justify-center items-center px-5 sm:px-12 py-5 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100">
                 <div className="w-full">
-                    <div className="w-8 h-8 md:w-10 md:h-10 cursor-pointer">
+                    <div className="w-8 h-8 md:w-10 md:h-10 cursor-pointer mt-20" onClick={() => { navigate('/') }}>
                         <img src={images.logo} alt="" className="object-cover" />
                     </div>
                     <div>
@@ -146,7 +146,7 @@ const SignupPage = () => {
                         gradiant={true}
                         rounded="rounded-lg"
                         onChange={handelChange}
-                        onClick={handelClick}
+                        onClick={() => { navigate('/login') }}
                     />
                 </form>
                 <div className="relative flex justify-center items-center w-full">

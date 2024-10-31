@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images/images";
 import Button from "../../shared/Button";
 
 const LandingSection = () => {
+    const navigate = useNavigate();
     return (
         <div className="flex h-[100vh] w-full relative">
             <img src={images.landingPage} alt="landing" className="w-full h-full object-cover " />
@@ -17,8 +19,8 @@ const LandingSection = () => {
                             a few clicks.
                         </p>
                         <div className="flex gap-4 w-full ">
-                            <Button name={'Explore RE Decor'} variant={'contained'} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
-                            <Button name={'Try For Free'} variant={'outlined'} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
+                            <Button name={'Explore RE Decor'} onClick={() => { navigate('/Gallery') }} variant={'contained'} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
+                            <Button name={'Try For Free'} onClick={() => { navigate('/AI') }} variant={'outlined'} gradiant={true} rounded={'rounded-lg'} fullWidth={true} />
                         </div>
                     </div>
                 </div>

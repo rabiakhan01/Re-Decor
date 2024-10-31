@@ -57,9 +57,9 @@ const LoginPage = () => {
 
     return (
         <div className="flex w-full h-lvh justify-center items-center">
-            <img src={images.cover_photo} alt="" className="object-cover h-full w-full" />
-            <div className="absolute w-[90%] sm:w-[80%] md:w-[60%] xl:w-[35%] flex flex-col gap-4 justify-center items-center px-5 sm:px-12 py-6 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100">
-                <div className="w-full flex flex-col gap-2">
+            <img src={images.cover_photo} alt="cover-page" className="object-cover h-full w-full" />
+            <div className="absolute min-h-[80%] w-[90%] sm:w-[80%] md:w-[27rem] flex flex-col gap-4 justify-center overflow-auto items-center px-5 sm:px-12 py-6 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100">
+                <div className="w-full flex flex-col gap-2" onClick={() => { navigate('/') }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 cursor-pointer">
                         <img src={images.logo} alt="" className="object-cover" />
                     </div>
@@ -81,7 +81,7 @@ const LoginPage = () => {
                     <MuiTextField
                         name="password"
                         placeholder="Password"
-                        type="password"
+                        type={visiblePassword ? 'text' : 'password'}
                         value={loginUser.password}
                         onChange={handelChange}
                         error={isEmpty?.password ? true : false}
@@ -109,14 +109,14 @@ const LoginPage = () => {
                         variant="outlined"
                         gradiant={true}
                         rounded="rounded-lg"
-                        onClick={handelClick}
+                        onClick={() => { navigate('/signup') }}
                     />
                 </form>
                 <div className="relative flex justify-center items-center w-full">
                     <MuiButton
                         variant="outlined"
                         fullWidth
-                        endIcon={<img src={images.google} className="h-5 w-5" />}
+                        endIcon={<img alt="google" src={images.google} className="h-5 w-5" />}
                         sx={{ borderRadius: 2, height: 43, borderColor: grayColor, color: textPrimaryColor, textTransform: 'capitalize', ":hover": { borderColor: purpleColor, bgcolor: 'transparent' }, fontSize: { xs: 12, sm: 14, lg: 16 } }}
                     >Continue with google</MuiButton>
                 </div>

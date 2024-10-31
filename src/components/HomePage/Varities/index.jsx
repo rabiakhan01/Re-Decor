@@ -5,8 +5,9 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
 import { allDesignVarities } from "../../../utils/DummyData";
 import CustomCard from "../../shared/CustomCard";
+import { useNavigate } from "react-router-dom";
 const Varities = () => {
-
+    const navigate = useNavigate();
     return (
         <div className="flex flex-col gap-8 px-6">
             <div className="flex flex-col gap-3 w-full justify-center items-center ">
@@ -57,6 +58,7 @@ const Varities = () => {
                                         heading={design.heading}
                                         desc={design.desc}
                                         id={design.id}
+                                        onClick={() => { navigate('/blog') }}
                                     />
                                 </SwiperSlide>
                             );

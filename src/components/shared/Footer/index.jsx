@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images/images";
-import Button from "../Button";
+import { Button } from '../../shared'
 const Footer = () => {
 
     const navigate = useNavigate();
-    const handelClick = () => {
-        navigate('/')
+    const handelClick = (path) => {
+        navigate(path)
     }
     return (
         <footer className="relative flex flex-col justify-center items-center text-textWhiteColor">
@@ -22,6 +22,7 @@ const Footer = () => {
                             variant="contained"
                             gradiant={true}
                             fullWidth={true}
+                            onClick={() => { navigate('/contact-us') }}
                         />
                     </div>
                 </div>
@@ -29,23 +30,23 @@ const Footer = () => {
             <div className='flex gap-1 h-auto items-center bg-gradient-to-r from-blueColor to-purpleColor w-full px-6 pt-20 pb-6'>
                 <div className="flex flex-wrap justify-between w-full">
                     <div className="grid grid-flow-row text-sm sm:text-base gap-2 w-full xs:w-1/2 md:w-[25%] px-2">
-                        <figure className="flex gap-2 items-center cursor-pointer" onClick={handelClick}>
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/') }}>
                             <img src={images.home} alt="" className="w-4 h-4" />
                             <figcaption>Home</figcaption>
                         </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer">
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/gallery') }}>
                             <img src={images.gallery} alt="" className="w-[18px] h-[18px]" />
                             <figcaption>About US</figcaption>
                         </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer">
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/contact-us') }}>
                             <img src={images.phone} alt="" className="w-4 h-4" />
                             <figcaption>Contact US</figcaption>
                         </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer">
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/price-plan') }}>
                             <img src={images.price} alt="" className="w-4 h-4" />
                             <figcaption>Price Plan</figcaption>
                         </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer">
+                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/blog') }}>
                             <img src={images.blog} alt="" className="w-4 h-4" />
                             <figcaption>Blog</figcaption>
                         </figure>

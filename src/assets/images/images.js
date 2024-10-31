@@ -17,10 +17,12 @@ const images = {
     zahra: require('./zahra.jpeg'),
     rabia: require('./rabia.jpeg'),
     rafay: require('./rafay.jpg'),
+    contactUS: require('./cover.jpg'),
 
 
     //signup page images:
     cover_photo: require('./cover1.jpg'),
+
     logo: require('./logo.png'),
 
     //icons 

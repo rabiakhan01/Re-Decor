@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import { purpleColor, grayColor, primaryColor, blueColor, textPrimaryColor, textSecondaryColor, textWhiteColor, lightPurpleColor, irisColor, textGrayColor, textLightBlackColor } from './src/utils/styles/colors'
+import { purpleColor, grayColor, primaryColor, blueColor, textPrimaryColor, textSecondaryColor, textWhiteColor, lightPurpleColor, irisColor, textGrayColor, textLightBlackColor, errorColor } from './src/utils/styles/colors'
 module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -16,6 +16,7 @@ module.exports = {
         'textLightBlackColor': textLightBlackColor,
         'grayColor': grayColor,
         'irisColor': irisColor,
+        'errorColor': errorColor
       },
       screens: {
         'xs': '400px',

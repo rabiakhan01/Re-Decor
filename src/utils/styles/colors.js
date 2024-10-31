@@ -11,6 +11,8 @@ const textWhiteColor = '#FFFFFF';
 const textGrayColor = '#A9A9A9';
 const textLightBlackColor = '#404040';
 
+const errorColor = '#D22B2B';
+
 export {
     blueColor,
     purpleColor,
@@ -23,4 +25,5 @@ export {
     textWhiteColor,
     textGrayColor,
     textLightBlackColor,
+    errorColor
 }
