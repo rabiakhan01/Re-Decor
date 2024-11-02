@@ -48,7 +48,7 @@ export const publicRoutes = [
 export const protectedRoutes = [
     {
         path: '/profile',
-        element: <ProfilePage />
+        element: <Layout><ProfilePage /></Layout>
     },
     {
         path: '/forget-password',

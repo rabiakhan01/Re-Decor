@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import images from '../../../assets/images/images'
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
+import { isAuthentication } from '../../../utils/utils';
+import { Avatar } from '@mui/material';
 const Navbar = () => {
 
     const naviagte = useNavigate();
+    const isAuthenticated = isAuthentication();
+    console.log("🚀 ~ Navbar ~ isAuthenticated:", isAuthenticated)
     //mobile menu
     const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -42,12 +46,22 @@ const Navbar = () => {
                 <NavItems />
             </div>
             <div className='hidden md:flex'>
-                <Button
-                    name="Sign In"
-                    variant="contained"
-                    gradiant={true}
-                    onClick={() => handelClick('/signup')}
-                />
+                {
+                    isAuthenticated ?
+                        <Avatar
+                            src='' alt="profile-image"
+                            className='cursor-pointer'
+                            onClick={() => { naviagte('/profile') }}
+                            sx={{ backgroundColor: '#531877', fontSize: '14px', fontWeight: '400', color: 'white' }}
+                        >RK</Avatar>
+                        :
+                        <Button
+                            name="Sign In"
+                            variant="contained"
+                            gradiant={true}
+                            onClick={() => handelClick('/login')}
+                        />
+                }
 
             </div>
 
@@ -67,12 +81,17 @@ const Navbar = () => {
                 mobileMenu &&
                 <div className='z-30 absolute top-16 left-0 flex flex-col justify-center items-center gap-4 md:hidden h-[90vh] w-full rounded-b-3xl bg-primaryColor'>
                     <NavItems />
-                    <Button
-                        name="Sign In"
-                        variant="contained"
-                        gradiant={true}
-                        onClick={() => handelClick('/signup')}
-                    />
+                    {
+                        isAuthenticated ?
+                            <Avatar />
+                            :
+                            <Button
+                                name="Sign In"
+                                variant="contained"
+                                gradiant={true}
+                                onClick={() => handelClick('/login')}
+                            />
+                    }
                 </div>
             }
         </header>
