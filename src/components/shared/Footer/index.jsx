@@ -8,7 +8,7 @@ const Footer = () => {
         navigate(path)
     }
     return (
-        <footer className="relative flex flex-col justify-center items-center text-textWhiteColor mt-20">
+        <footer className="relative flex flex-col justify-center items-center text-textWhiteColor mt-28">
             <div className="absolute -top-24 flex justify-center items-center w-full">
                 <div className="relative flex flex-col mobile:flex-row justify-between overflow-hidden mobile:items-center w-[85%] px-4 py-4 mobile:py-0 h-36 rounded-2xl border border-platniumColor shadow-platniumColor bg-lightPurpleColor">
                     <img src={images.star} alt="" className="absolute -right-48 md:right-0 cursor-pointer" onClick={handelClick} />
