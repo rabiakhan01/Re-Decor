@@ -43,16 +43,16 @@ export const publicRoutes = [
         path: '/price-plan',
         element: <Layout><PricePlan /></Layout>
     },
+    {
+        path: '/forget-password',
+        element: <ForgetPassword />
+    },
 ]
 
 export const protectedRoutes = [
     {
         path: '/profile',
         element: <Layout><ProfilePage /></Layout>
-    },
-    {
-        path: '/forget-password',
-        element: <ForgetPassword />
     },
 
 ]

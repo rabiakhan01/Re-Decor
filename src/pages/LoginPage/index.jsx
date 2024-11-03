@@ -93,7 +93,7 @@ const LoginPage = () => {
                             <Checkbox size="small" sx={{ color: blueColor, '&.Mui-checked': { color: purpleColor, }, }} onClick={showPassword} />
                             <label className="text-xs sm:text-sm ">Show Password</label>
                         </div>
-                        <p className="text-purpleColor text-xs sm:text-sm font-medium cursor-pointer">Forget Password</p>
+                        <p className="text-purpleColor text-xs sm:text-sm font-medium cursor-pointer" onClick={() => { navigate('/forget-password') }}>Forget Password</p>
 
                     </div>
                     <Button
