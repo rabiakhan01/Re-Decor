@@ -19,6 +19,16 @@ const images = {
     rafay: require('./rafay.jpg'),
     contactUS: require('./cover.jpg'),
 
+    // Gallery
+    japanese: require('./japanese.jpg'),
+    minimilist: require('./minimilist.jpg'),
+    roman: require('./roman.jpg'),
+    rustic: require('./rustic.jpg'),
+    tech: require('./tech.jpg'),
+    girls: require('./girls.jpg'),
+    chinese: require('./chinese.jpg'),
+    arabic: require('./arabic.jpg'),
+    coastle: require('./coastle.jpg'),
 
     //signup page images:
     cover_photo: require('./cover1.jpg'),
