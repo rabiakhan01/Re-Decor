@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>java script on sterlods</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <div class="container-1">
+    <h2>Challenge 1: Your age in days</h2>
+    <div class="flex-box-container-1">
+    <div>
+
+        <button class="btn" onclick="AgeInDays();">click me</button>
+
+    </div>
+    <div>
+
+        <button class="rest" onclick="reset();">reset</button>
+        
+    </div>
+</div>
+<div class="flex-box-container-1">
+
+<div id="flex-box-result"></div>
+</div>
+</div>
+<div class="container-2">
+    <h2>Challenge 2: Cat generator</h2>
+    <button class="cat" onclick="catGenerator();">Generate Cat</button>
+    <button class="rest" onclick="catremover();">Remove
+    </button>
+    <div class="flex-box-container-2" id="flex-cat-gen">
+    </div>
+</div>
+<div class="container-3">
+
+<h2>Challenge 3: Rock, Paper, Scissor</h2> 
+<div class="flex-box-rps" id="flex-box-rps-div">
+    <img id="rock" src="rock.jpg" style="height: 150px; width:150px" onclick="rpsGame(this);">
+    <img id="paper" src="paper.jpg" style="height: 150px; width:150px">
+    <img id="scissor" src="scissor.jpg" style="height: 150px; width:150px">
+    
+
+</div>
+</div>
+<div class="container-4">
+    <h2>Challenge 4: Change the color of all the buttons </h2>
+    <div class="flex-box-change-color">
+    <form action="">
+        <select name="backdrop" id="background" onchange="btnColorChnage(this)">
+            <option value="Random">Random</option>
+            <option value="Red">Red</option>
+            <option value="green">Green</option>
+            <option value="Reset">Reset</option>
+        </select>
+    </form>
+    <button class="btn">Wee!</button>
+    <button class="rest">Yahoo!</button>
+    <button class="btn-yellow">Google!</button>
+    <button class="btn-green">facebook!</button>
+    </div>
+</div>
+<div class=""></div>
+<div class="div"></div>
+<div class="container-5">
+    <h2>challenge 5: Black Jack</h2>
+    <h3><span id='blackjack'>let's play</span></h3>
+    <div class="blackjack-row-1">
+        <div id="your-box">
+            <h2>You : <span id="Your-blackjack-result">0</span></h2>
+        </div>
+        <div id="dealer-box">
+            <h2>Dealer : <span id="Dealer-blackjack-result">0</span></h2>
+        </div>
+    </div>
+    <div class="flex-blackjack-row-2">
+        <div>
+            <button class='btn' id='blackjack-hit-btn'>Hit</button>
+            <button class="btn-yellow" id="blackjack-stand-btn">Stand</button>
+            <button class="rest" id='blackjack-deal-btn'>Deal</button>
+        </div>
+
+    </div>
+    <div class="flex-blackjack-row-3">
+        <table>
+            <tr>
+                <th><span id="wins">Wins</span></th>
+                <th><span id="loses">Loses</span></th>
+                <th><span id="draws">Draws</span></th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+import 'package:flutter/material.dart';
+import 'package:perform/card1.dart';
+import 'package:perform/card2.dart';
+import 'package:perform/card3.dart';
+
+void main () => runApp(MaterialApp(
+  theme: ThemeData(
+    brightness: Brightness.dark,
+  ),
+  home:Home(
+
+  )
+));
+
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late int selectedIndex=0;
+  List <Widget> ListOfPages=<Widget>[
+    Container(
+      child: Card1( ),
+    ),
+    Container(
+      child: Card2( ),
+    ),
+    Container(
+      child: Card3( ),
+    ),
+
+  ];
+  void _onTapped(int index){
+    setState(() {
+      selectedIndex=index;
+    });
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('RecipeApp'),
+        centerTitle: true,
+
+      ),
+
+      bottomNavigationBar: BottomNavigationBar (
+
+      currentIndex: selectedIndex,
+        onTap: _onTapped,
+
+        items: const <BottomNavigationBarItem>
+        [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+
+              label: 'Home', ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.headphones),
+          label: 'Phone', ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          label: 'Chat', ),
+        ],
+
+      ),
+      body: ListOfPages[selectedIndex],
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+
+class Card1 extends StatefulWidget {
+  const Card1({Key? key}) : super(key: key);
+
+  @override
+  State<Card1> createState() => _Card1State();
+}
+
+class _Card1State extends State<Card1> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+class Card2 extends StatefulWidget {
+  const Card2({Key? key}) : super(key: key);
+
+  @override
+  State<Card2> createState() => _Card2State();
+}
+
+class _Card2State extends State<Card2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Colors.blue,
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+class Card3 extends StatefulWidget {
+  const Card3({Key? key}) : super(key: key);
+
+  @override
+  State<Card3> createState() => _Card3State();
+}
+
+class _Card3State extends State<Card3> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Colors.green,
+      ),
+    );
+  }
+}

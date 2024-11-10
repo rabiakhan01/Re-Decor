@@ -42,14 +42,6 @@ const Footer = () => {
                             <img src={images.phone} alt="" className="w-4 h-4" />
                             <figcaption>Contact US</figcaption>
                         </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/price-plan') }}>
-                            <img src={images.price} alt="" className="w-4 h-4" />
-                            <figcaption>Price Plan</figcaption>
-                        </figure>
-                        <figure className="flex gap-2 items-center cursor-pointer" onClick={() => { handelClick('/blog') }}>
-                            <img src={images.blog} alt="" className="w-4 h-4" />
-                            <figcaption>Blog</figcaption>
-                        </figure>
                     </div>
                     <div className="grid grid-flow-row mt-6 xs:mt-0 xs:justify-end text-sm sm:text-base md:justify-start gap-2 w-full xs:w-1/2 md:w-[33%] px-2">
                         <h1 className="text-lg sm:text-xl font-medium">Contact Detail</h1>
