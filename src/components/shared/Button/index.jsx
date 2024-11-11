@@ -1,5 +1,5 @@
 
-export default function Button({ type, name, variant, color, gradiant, fullWidth, rounded, onClick, className }) {
+export default function Button({ type, name, variant, color, gradiant, fullWidth, rounded, onClick, className, disabled }) {
 
     if (variant === 'contained') {
         if (gradiant) {
@@ -12,6 +12,6 @@ export default function Button({ type, name, variant, color, gradiant, fullWidth
         }
     }
     return (
-        <button type={type} className={`${className} ${fullWidth ? 'w-full' : ''} flex justify-center items-center px-3 mobile:px-4 md:px-6 py-2 text-xs mobile:text-sm sm:text-base font-normal capitalize ${color} ${rounded ? rounded : 'rounded-full !py-[10px] !px-5'}`} id="button" onClick={onClick}>{name}</button>
+        <button disabled={disabled} type={type} className={`${className} ${fullWidth ? 'w-full' : ''} flex justify-center items-center px-3 mobile:px-4 md:px-6 py-2 text-xs mobile:text-sm sm:text-base font-normal disabled:cursor-not-allowed capitalize ${color} ${rounded ? rounded : 'rounded-full !py-[10px] !px-5'}`} id="button" onClick={onClick}>{name}</button>
     )
 }
