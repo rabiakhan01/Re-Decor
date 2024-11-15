@@ -4,11 +4,13 @@ import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from '@mui/material';
 import { useIsAuthentication } from '../../../utils/utils';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+
+    const currentUser = useSelector((state) => state?.user?.currentUser);
 
     const naviagte = useNavigate();
     const isAuthenticated = useIsAuthentication();
-    console.log("🚀 ~ Navbar ~ isAuthenticated:", isAuthenticated)
     //mobile menu
     const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -49,7 +51,7 @@ const Navbar = () => {
                 {
                     isAuthenticated ?
                         <Avatar
-                            src='' alt="profile-image"
+                            src={currentUser?.profileImage} alt="profile-image"
                             className='cursor-pointer'
                             onClick={() => { naviagte('/profile') }}
                             sx={{ backgroundColor: '#531877', fontSize: '14px', fontWeight: '400', color: 'white' }}

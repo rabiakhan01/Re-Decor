@@ -1,14 +1,37 @@
 // AccountSettingsCard.js
 import React, { useState } from 'react';
 import { CustomModal, Button } from '../../shared';
+import axios from '../../../redux/https';
+import { endPoints } from '../../../redux/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { showToast } from '../../Toast';
+import { logout } from '../../../redux/actions/userActions';
 
 const AccountSettingsCard = () => {
+
+    const currentUser = useSelector((state) => state?.user?.currentUser);
+    console.log("🚀 ~ AccountSettingsCard ~ currentUser:", currentUser)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [isResetModalOpen, setResetModalOpen] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false)
 
-    const handleOpenDeleteModal = () => setDeleteModalOpen(true);
-    const handleCloseDeleteModal = () => setDeleteModalOpen(false);
+    const handleDeleteUser = () => {
+        setDeleteLoading(true);
+        axios.delete(endPoints?.deleteUser + `?accessToken=${currentUser?.accessToken}`).then((res) => {
+            setDeleteLoading(false);
+            setDeleteModalOpen(false)
+            dispatch(logout());
+            navigate('/signup')
 
+        }).catch((error) => {
+            setDeleteLoading(false)
+            showToast('error', error?.response?.data?.message ? error?.response?.data?.message : 'Something wents wrong')
+        })
+    }
     const handleOpenResetModal = () => setResetModalOpen(true);
     const handleCloseResetModal = () => setResetModalOpen(false);
 
@@ -25,7 +48,7 @@ const AccountSettingsCard = () => {
                         <div className='w-fit px-4'>
                             <Button
                                 variant="contained"
-                                onClick={handleOpenDeleteModal}
+                                onClick={() => { setDeleteModalOpen(true) }}
                                 color={'bg-[#D22B2B]'}
                                 name={'Delete Account'}
                                 rounded={'rounded-md'}
@@ -52,7 +75,7 @@ const AccountSettingsCard = () => {
                 </div>
             </div >
 
-            <CustomModal isOpen={isDeleteModalOpen} handleClose={handleCloseDeleteModal}>
+            <CustomModal isOpen={isDeleteModalOpen} handleClose={() => { setDeleteModalOpen(false) }}>
                 <h1 className='text-xl font-medium'>Alert</h1>
                 <p className='text-base text-textGrayColor mb-2'>Are you sure you want to delete your account? This action is irreversible.</p>
                 <div className='flex justify-end gap-2 w-full'>
@@ -63,7 +86,7 @@ const AccountSettingsCard = () => {
                         rounded={'rounded-md'}
                         className={'!px-3'}
                         name={'Cancel'}
-                        onClick={() => { }}
+                        onClick={() => { setDeleteModalOpen(false) }}
                     />
                     <Button
                         type="submit"
@@ -72,7 +95,8 @@ const AccountSettingsCard = () => {
                         color={'bg-[#D22B2B]'}
                         className={'!px-3 !text-textWhiteColor'}
                         name={'Yes, Delete'}
-                        onClick={() => { }}
+                        loading={deleteLoading}
+                        onClick={handleDeleteUser}
                     />
                 </div>            </CustomModal>
 

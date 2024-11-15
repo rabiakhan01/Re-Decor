@@ -12,16 +12,6 @@ function* handleLogin(data) {
     }
 }
 
-// Worker saga to handle user update
-function* handleUpdateUser(action) {
-    try {
-        const { data } = yield call('http://localhost:8080/auth/update-user', action.payload); // API call for update
-        yield put(updateUser(data.user));
-    } catch (error) {
-        console.error('User update failed:', error);
-    }
-}
-
 function* handleLogoutUser() {
     try {
         yield put(setCurrentUser({}))
@@ -30,11 +20,20 @@ function* handleLogoutUser() {
         console.log('logout Failed', error)
     }
 }
+
+function* handleUpdateUser(data) {
+    try {
+        yield put(setCurrentUser(data?.payload))
+    } catch (error) {
+        console.error('Failed to update user:', error);
+    }
+}
 // Watcher sagas
 function* userSaga() {
     yield takeLatest('user/login', handleLogin);
     yield takeLatest('user/updateUser', handleUpdateUser);
-    yield takeLatest('user/logout', handleLogoutUser)
+    yield takeLatest('user/logout', handleLogoutUser);
+    yield takeLatest('user/updateUser', handleUpdateUser)
 }
 
 export default userSaga;
