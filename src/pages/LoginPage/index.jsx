@@ -1,25 +1,35 @@
+// Library Imports
 import React, { useState } from "react"
-import images from "../../assets/images/images";
-import { Checkbox, } from "@mui/material";
-import Button from "../../components/shared/Button";
-import { blueColor, grayColor, purpleColor, textPrimaryColor } from "../../utils/styles/colors";
-import MuiTextField from "../../components/shared/MuiTextField";
-import { Button as MuiButton } from "@mui/material";
+import { Checkbox } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+// Local Imports
+import images from "../../assets/images/images";
+import Button from "../../components/shared/Button";
+import { blueColor, purpleColor } from "../../utils/styles/colors";
+import MuiTextField from "../../components/shared/MuiTextField";
 import { isUserDetailEmpty, removeError } from "../../helpers/GlobalMethods";
+import { loginUser } from "../../redux/actions/userActions";
+import Toast, { showToast } from "../../components/Toast";
+import axios from "../../redux/https";
+import { endPoints } from "../../redux/constants";
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const [loginUser, setLoginUser] = useState({
+    const dispatch = useDispatch();
+    const [loginUserData, setLoginUserData] = useState({
         email: '',
         password: '',
     });
     const [visiblePassword, setVisiblePassword] = useState();
     const [isEmpty, setIsEmpty] = useState();
+    const [loading, setLoading] = useState(false);
 
+    /****************** Functions ******************/
     //handel the onchange for the email
     const handelEmailChange = (event) => {
-        setLoginUser(() => ({ ...loginUser, email: event.target.value }))
+        setLoginUserData(() => ({ ...loginUserData, email: event.target.value }))
         let empty = { ...isEmpty };
         empty = {
             ...isEmpty,
@@ -30,12 +40,12 @@ const LoginPage = () => {
     }
 
     const handelChange = (event) => {
-        setLoginUser(() => ({
-            ...loginUser,
+        setLoginUserData(() => ({
+            ...loginUserData,
             [event.target.name]: event.target.value
         }))
         if (isEmpty) {
-            const empty = removeError(event.target.name, loginUser, isEmpty);
+            const empty = removeError(event.target.name, loginUserData, isEmpty);
             setIsEmpty(empty);
         }
     }
@@ -44,11 +54,25 @@ const LoginPage = () => {
         setVisiblePassword(!visiblePassword)
     }
 
-    const handelClick = (event) => {
+    const handleLoginClick = (event) => {
         event.preventDefault();
-        const validations = isUserDetailEmpty(loginUser);
+        const validations = isUserDetailEmpty(loginUserData);
         if (!validations) {
-            console.log("success")
+            const payload = {
+                email: loginUserData?.email,
+                password: loginUserData?.password
+            }
+            setLoading(true)
+            axios?.post(endPoints?.login, payload).then((res) => {
+                console.log(res)
+                const currentUser = res?.data?.data
+                dispatch(loginUser(currentUser))
+                setLoading(false)
+                navigate('/')
+            }).catch((err) => {
+                setLoading(false)
+                showToast('error', err?.response?.data?.message ? err?.response?.data?.message : 'Something wents wrong');
+            })
         }
         else {
             setIsEmpty(validations)
@@ -73,7 +97,7 @@ const LoginPage = () => {
                         name="email"
                         placeholder="Email"
                         type="email"
-                        value={loginUser.email}
+                        value={loginUserData.email}
                         onChange={handelEmailChange}
                         error={isEmpty?.email ? true : isEmpty?.isEmailNotValid ? true : false}
                         helperText={isEmpty?.email ? 'Email is required' : isEmpty?.isEmailNotValid ? 'Email is invalid' : ''}
@@ -82,7 +106,7 @@ const LoginPage = () => {
                         name="password"
                         placeholder="Password"
                         type={visiblePassword ? 'text' : 'password'}
-                        value={loginUser.password}
+                        value={loginUserData.password}
                         onChange={handelChange}
                         error={isEmpty?.password ? true : false}
                         helperText={isEmpty?.password ? 'Password is required' : ''}
@@ -101,7 +125,8 @@ const LoginPage = () => {
                         variant="contained"
                         gradiant={true}
                         rounded="rounded-lg"
-                        onClick={handelClick}
+                        onClick={handleLoginClick}
+                        loading={loading}
                     />
                     <Button
                         type="button"
@@ -112,16 +137,8 @@ const LoginPage = () => {
                         onClick={() => { navigate('/signup') }}
                     />
                 </form>
-                <div className="relative flex justify-center items-center w-full">
-                    <MuiButton
-                        variant="outlined"
-                        fullWidth
-                        endIcon={<img alt="google" src={images.google} className="h-5 w-5" />}
-                        sx={{ borderRadius: 2, height: 43, borderColor: grayColor, color: textPrimaryColor, textTransform: 'capitalize', ":hover": { borderColor: purpleColor, bgcolor: 'transparent' }, fontSize: { xs: 12, sm: 14, lg: 16 } }}
-                    >Continue with google</MuiButton>
-                </div>
             </div>
-
+            <Toast />
         </div>
     )
 }

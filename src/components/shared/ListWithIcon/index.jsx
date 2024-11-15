@@ -1,4 +1,3 @@
-import { Icon } from "@mui/material";
 
 const ListWithIcon = ({ icon, heading, desc }) => {
     return (

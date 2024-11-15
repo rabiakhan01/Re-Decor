@@ -1,12 +1,18 @@
-import React, { useState } from "react"
+// Library Imports
+import React, { useState } from "react";
+import { Checkbox } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+
+// Local Imports
 import images from "../../assets/images/images";
-import { Checkbox, } from "@mui/material";
 import Button from "../../components/shared/Button";
 import { blueColor, purpleColor } from "../../utils/styles/colors";
 import MuiTextField from "../../components/shared/MuiTextField";
-import { useNavigate } from "react-router-dom";
 import { isUserDetailEmpty, removeError } from "../../helpers/GlobalMethods";
 import { OTPInput } from "../../components/shared";
+import { endPoints } from "../../redux/constants";
+import axios from "../../redux/https";
+import Toast, { showToast } from "../../components/Toast";
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
@@ -16,16 +22,20 @@ const ForgetPassword = () => {
         confirmPassword: ''
     });
 
+    const { state } = useLocation()
+
     const [visiblePassword, setVisiblePassword] = useState();
     const [emptyData, setEmptyData] = useState({});
+    const [passwordLoading, setPasswordLoading] = useState(false)
 
     // email verification states
     const [email, setEmail] = useState('');
-    const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
+    const [isVerifiedEmail, setIsVerifiedEmail] = useState(state?.from === 'signup' ? true : false);
     const [isEmptyEmail, setIsEmptyEmail] = useState(false);
+    const [emailLoading, setEmailLoading] = useState(false);
 
     // otp verification states
-
+    const [otpLoading, setOtpLoading] = useState(false)
     const [otp, setOtp] = useState('');
     const [isValidOtp, setIsValidOtp] = useState(false)
 
@@ -41,14 +51,68 @@ const ForgetPassword = () => {
         setVisiblePassword(!visiblePassword)
     }
 
-    const handelClick = (event) => {
-        event.preventDefault();
+    const handleChangePassword = () => {
         const validations = isUserDetailEmpty(userPassword);
-        if (!validations) {
-            console.log("success")
+        if (validations) {
+            console.log('onClick')
+            const payload = {
+                email: email,
+                currentPassword: userPassword?.currentPassword,
+                newPassword: userPassword?.newPassword
+            }
+            setPasswordLoading(true)
+            axios?.post(endPoints?.forgetPassword, payload).then((res) => {
+                setPasswordLoading(false)
+                navigate('/login');
+            }).catch((err) => {
+                setPasswordLoading(false);
+                showToast('error', err?.response?.data?.message || 'Something wents wrong')
+            })
         }
         else {
             setEmptyData(validations)
+        }
+    }
+    const handleVerifyOTP = () => {
+        if (state?.from === 'signup') {
+            setOtpLoading(true)
+            axios?.post(endPoints?.verifyOTP, { email: state?.email, otp: Number(otp) }).then((res) => {
+                setOtpLoading(false)
+                navigate('/login');
+            }).catch((err) => {
+                setOtpLoading(false)
+                console.log(err?.response?.data?.message);
+                showToast('error', err?.response?.data?.message ? err?.response?.data?.message : 'Something wents wrong')
+            })
+        }
+        else {
+            setOtpLoading(true)
+            axios?.post(endPoints?.verifyOTP, { email: email, otp: Number(otp) }).then((res) => {
+                setOtpLoading(false)
+                setIsValidOtp(true)
+            }).catch((err) => {
+                setOtpLoading(false)
+                console.log(err?.response?.data?.message);
+                showToast('error', err?.response?.data?.message ? err?.response?.data?.message : 'Something wents wrong')
+            })
+        }
+    }
+
+    const handleVerifyEmail = () => {
+        if (email === null || email === '' || email === undefined) {
+            setIsEmptyEmail(true)
+        }
+        else {
+            setEmailLoading(true)
+            axios.post(endPoints.verifyEmail, { email: email }).then((res) => {
+                console.log("🚀 ~ awaitaxios.post ~ res:", res)
+                setIsVerifiedEmail(true);
+                setEmailLoading(false)
+            }).catch((err) => {
+                console.log("🚀 ~ awaitaxios.post ~ err:", err)
+                setEmailLoading(false)
+                showToast('error', err?.response?.data?.message ? err?.response?.data?.message : 'Something wents wrong')
+            })
         }
     }
 
@@ -67,7 +131,7 @@ const ForgetPassword = () => {
                                     <p className="font-normal text-sm  text-textSecondaryColor">Change the password by entring new password</p>
                                 </div>
                             </div>
-                            <form className="flex flex-col gap-2 w-full">
+                            <div className="flex flex-col gap-2 w-full">
                                 <MuiTextField
                                     name="currentPassword"
                                     placeholder="Current Password"
@@ -106,11 +170,11 @@ const ForgetPassword = () => {
                                     variant="contained"
                                     gradiant={true}
                                     rounded="rounded-lg"
-                                    onClick={handelClick}
+                                    loading={passwordLoading}
+                                    onClick={handleChangePassword}
                                 />
-                            </form>
+                            </div>
                         </div>
-
                     </div>
                     :
                     isVerifiedEmail ?
@@ -143,12 +207,9 @@ const ForgetPassword = () => {
                                     disabled={otp?.length === 6 ? false : true}
                                     variant="contained"
                                     gradiant={true}
+                                    loading={otpLoading}
                                     rounded="rounded-lg"
-                                    onClick={() => {
-                                        if (otp?.length === 6) {
-                                            setIsValidOtp(true)
-                                        }
-                                    }}
+                                    onClick={handleVerifyOTP}
                                 />
                             </div>
                         </div>
@@ -183,20 +244,15 @@ const ForgetPassword = () => {
                                         name="Verify Email"
                                         variant="contained"
                                         gradiant={true}
+                                        loading={emailLoading}
                                         rounded="rounded-lg"
-                                        onClick={() => {
-                                            if (email === null || email === '' || email === undefined) {
-                                                setIsEmptyEmail(true)
-                                            }
-                                            else {
-                                                setIsVerifiedEmail(true)
-                                            }
-                                        }}
+                                        onClick={handleVerifyEmail}
                                     />
                                 </div>
                             </div>
                         </div>
             }
+            <Toast />
         </React.Fragment>
     )
 }

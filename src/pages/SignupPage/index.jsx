@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import images from "../../assets/images/images";
 import { Checkbox } from "@mui/material";
 import Button from "../../components/shared/Button";
-import { blueColor, grayColor, purpleColor, textPrimaryColor } from "../../utils/styles/colors";
+import { blueColor, purpleColor } from "../../utils/styles/colors";
 import MuiTextField from "../../components/shared/MuiTextField";
-import { Button as MuiButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { isUserDetailEmpty, removeError } from "../../helpers/GlobalMethods";
+import axios from "../../redux/https";
+import { endPoints } from "../../redux/constants";
+import Toast, { showToast } from "../../components/Toast";
 
 const SignupPage = () => {
 
@@ -19,6 +21,7 @@ const SignupPage = () => {
     });
     const [visiblePassword, setVisiblePassword] = useState();
     const [isEmpty, setIsEmpty] = useState({});
+    const [loading, setLoading] = useState(false)
 
     //handel the onchange for the email
     const handelEmailChange = (event) => {
@@ -59,11 +62,28 @@ const SignupPage = () => {
         setIsEmpty(empty)
     }
     //submit the data after click
-    const handelClick = (event) => {
+    const handleSave = (event) => {
         event.preventDefault();
         const validations = isUserDetailEmpty(signupUser);
         if (!validations) {
-            console.log("success")
+            const payload = {
+                username: signupUser?.username,
+                email: signupUser?.email,
+                password: signupUser?.password
+            }
+            setLoading(true)
+            axios.post(endPoints?.singup, payload).then((res) => {
+                setLoading(false)
+                navigate('/verify-email', {
+                    state: {
+                        from: 'signup',
+                        email: signupUser?.email
+                    }
+                })
+            }).then((err) => {
+                showToast('error', err?.response?.data?.message ? err?.response?.data?.message : 'Something wents wrong')
+                setLoading(false)
+            })
         }
         else {
             setIsEmpty(validations)
@@ -137,8 +157,9 @@ const SignupPage = () => {
                         variant="contained"
                         gradiant={true}
                         rounded="rounded-lg"
+                        loading={loading}
                         onChange={handelChange}
-                        onClick={handelClick}
+                        onClick={handleSave}
                     />
                     <Button
                         name="Already Have An Account"
@@ -149,15 +170,8 @@ const SignupPage = () => {
                         onClick={() => { navigate('/login') }}
                     />
                 </form>
-                <div className="relative flex justify-center items-center w-full">
-                    <MuiButton
-                        variant="outlined"
-                        fullWidth
-                        endIcon={<img src={images.google} alt="" className="h-5 w-5" />}
-                        sx={{ borderRadius: 2, height: 40, borderColor: grayColor, color: textPrimaryColor, textTransform: 'capitalize', ":hover": { borderColor: purpleColor, bgcolor: 'transparent' }, fontSize: { xs: 12, sm: 14, lg: 16 } }}
-                    >Signup with google</MuiButton>
-                </div>
             </div>
+            <Toast />
         </div>
     )
 }

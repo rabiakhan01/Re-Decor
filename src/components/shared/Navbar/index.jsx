@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import images from '../../../assets/images/images'
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
-import { isAuthentication } from '../../../utils/utils';
 import { Avatar } from '@mui/material';
+import { useIsAuthentication } from '../../../utils/utils';
 const Navbar = () => {
 
     const naviagte = useNavigate();
-    const isAuthenticated = isAuthentication();
+    const isAuthenticated = useIsAuthentication();
     console.log("🚀 ~ Navbar ~ isAuthenticated:", isAuthenticated)
     //mobile menu
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -83,7 +83,12 @@ const Navbar = () => {
                     <NavItems />
                     {
                         isAuthenticated ?
-                            <Avatar />
+                            <Button
+                                name="Profile"
+                                variant="contained"
+                                gradiant={true}
+                                onClick={() => { handelClick('/profile'); setMobileMenu(false) }}
+                            />
                             :
                             <Button
                                 name="Sign In"

@@ -4,11 +4,16 @@ import AI from "../pages/AI";
 import ContactUs from "../pages/ContactUS";
 import ForgetPassword from "../pages/ForgetPassword";
 import Gallery from "../pages/Gallery";
+import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import ProfilePage from "../pages/ProfilePage";
 import SignupPage from "../pages/SignupPage";
 
 export const publicRoutes = [
+    {
+        path: '/',
+        element: <HomePage />
+    },
     {
         path: '/login',
         element: <LoginPage />
@@ -35,6 +40,10 @@ export const publicRoutes = [
     },
     {
         path: '/forget-password',
+        element: <ForgetPassword />
+    },
+    {
+        path: '/verify-email',
         element: <ForgetPassword />
     },
 ]

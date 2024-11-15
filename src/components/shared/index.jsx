@@ -5,3 +5,4 @@ export { default as Button } from './Button';
 export { default as InputField } from './MuiTextField';
 export { default as CustomModal } from './CustomModal';
 export { default as OTPInput } from './OTP';
+export { default as Spinner } from './Spinner'

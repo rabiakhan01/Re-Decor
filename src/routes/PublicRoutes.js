@@ -1,12 +1,12 @@
 import React from "react";
-import { isAuthentication } from "../utils/utils";
 import { Navigate, Outlet } from "react-router-dom";
+import { useIsAuthentication } from "../utils/utils";
 
 const PublicRoutes = () => {
     return (
         <React.Fragment>
             {
-                isAuthentication() ? <Navigate to="/" /> : <Outlet />
+                useIsAuthentication() ? <Navigate to="/" /> : <Outlet />
             }
         </React.Fragment>
     )

@@ -2,13 +2,21 @@
 import React, { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { InputField, CustomModal, Button } from '../../shared'
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../redux/actions/userActions';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileCard = ({ avatar, username, email, onProfileUpdate }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleOpenModal = () => setIsModalOpen(true);
-    const handleCloseModal = () => setIsModalOpen(false);
-
+    const [openProfileModal, setOpenProfileModal] = useState(false);
+    const [openLogoutModal, setOpenLogoutModal] = useState(false);
+    const handleLogout = () => {
+        dispatch(logout())
+        navigate('/login')
+        setOpenLogoutModal(false)
+    }
     return (
         <React.Fragment>
             <div className='w-full shadow-md rounded-lg px-6'>
@@ -21,19 +29,26 @@ const ProfileCard = ({ avatar, username, email, onProfileUpdate }) => {
                             <p>Email: rabiakhandev1@gmail.com{email}</p>
                         </div>
                     </div>
-                    <div className='flex h-full sm:justify-center'>
+                    <div className='flex h-full gap-2 sm:justify-center'>
                         <Button
                             variant="contained"
                             gradiant={true}
                             name={'Change Profile'}
-                            onClick={handleOpenModal}
+                            onClick={() => { setOpenProfileModal(true) }}
+                            rounded={'rounded-md'}
+                        />
+                        <Button
+                            variant="outlined"
+                            gradiant={true}
+                            name={'Logout'}
+                            onClick={() => { setOpenLogoutModal(true) }}
                             rounded={'rounded-md'}
                         />
                     </div>
                 </div>
             </div>
 
-            <CustomModal isOpen={isModalOpen} handleClose={handleCloseModal}>
+            <CustomModal isOpen={openProfileModal} handleClose={() => { setOpenProfileModal(false) }}>
                 <form onSubmit={onProfileUpdate}>
                     <h1 className='pb-3 text-lg font-medium'>Change Profile</h1>
                     {/* Add form fields here */}
@@ -48,7 +63,7 @@ const ProfileCard = ({ avatar, username, email, onProfileUpdate }) => {
                             rounded={'rounded-md'}
                             name={'Cancel'}
                             className={'!px-3'}
-                            onClick={() => { setIsModalOpen(false) }}
+                            onClick={() => { setOpenProfileModal(false) }}
                         />
                         <Button
                             type="submit"
@@ -56,10 +71,33 @@ const ProfileCard = ({ avatar, username, email, onProfileUpdate }) => {
                             gradiant={true}
                             rounded={'rounded-md'}
                             name={'Save'}
-                            onClick={() => { setIsModalOpen(false) }}
+                            onClick={() => { setOpenProfileModal(false) }}
                         />
                     </div>
                 </form>
+            </CustomModal>
+            <CustomModal isOpen={openLogoutModal} handleClose={() => { setOpenLogoutModal(false) }}>
+                <h1 className='pb-2 text-lg font-medium'>Change Profile</h1>
+                <p className='text-textSecondaryColor pb-3'> Are you sure you want to logout</p>
+                <div className='flex justify-end gap-2 w-full'>
+                    <Button
+                        type="submit"
+                        variant="outlined"
+                        gradiant={true}
+                        rounded={'rounded-md'}
+                        name={'Cancel'}
+                        className={'!px-3'}
+                        onClick={() => { setOpenLogoutModal(false) }}
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        gradiant={true}
+                        rounded={'rounded-md'}
+                        name={'Yes'}
+                        onClick={handleLogout}
+                    />
+                </div>
             </CustomModal>
         </React.Fragment>
     );

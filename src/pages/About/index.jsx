@@ -9,19 +9,19 @@ const About = () => {
             name: "Rabia Khan",
             role: "Front End Developer & AI Developer",
             description: "Rabia Khan is the visionary behind the AI Home Decor project. She created the front end using React.js, trained the AI model with Python libraries, and successfully deployed the project. She diligently tracks changes using GitHub VCS.",
-            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.rabia} />
+            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.rabia} alt='' />
         },
         {
             name: "Zahra Zafar",
             role: "Marketer & Documentation Specialist",
             description: "Zahra Zafar played a crucial role in documenting the project and marketing the AI Home Decor concept. Her efforts ensured clear communication and effective outreach for the project.",
-            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.zahra} />
+            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.zahra} alt='' />
         },
         {
             name: "Rafay Iftikhar Khan",
             role: "Backend Developer",
             description: "Rafay Iftikhar Khan is the backend developer who utilized MongoDB for database management and built APIs using Express and Node.js for handling requests efficiently.",
-            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.rafay} />
+            image: <img className='h-full w-full object-cover overflow-hidden rounded-lg' src={images.rafay} alt='' />
         }
     ];
 
